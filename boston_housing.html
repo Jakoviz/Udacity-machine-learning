@@ -11971,9 +11971,9 @@ Standard deviation of prices: $165,171.13
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The higher RM is, the higher is also MEDV.
-The higher LSTAT is, the lower is MEDV.
-The higher PTRATIO is, the lower is MEDV.</p>
+<p>The higher RM is, the higher is also MEDV, because more rooms generally means more space and consequently more price on the houses.
+The higher LSTAT is, the lower is MEDV, because of a) the reputation of the neighborhood correlates with this metric and b) because a high socio-economic class/income level reflects to the housing market in the form of higher bidding prices.
+The higher PTRATIO is, the lower is MEDV, because a) the reputation of the neighborhood correlates with this metric and b) because a high socio-economic class/income level reflects to schooling in the form of more supply of private schools and thus smaller teacher-student ratios in all schools.</p>
 
 </div>
 </div>
@@ -12185,7 +12185,7 @@ The higher PTRATIO is, the lower is MEDV.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> When you don't train your model with any data that you use for testing, you don't make your model "memorize" the response variable and significantly reduce the possibility of overfitting. You should never train your model with testing data. If you do, your model most likely will not be generizable with the capability evaluated by your performance metrics from the test you ran.</p>
+<p><strong>Answer: </strong> The benefit of splitting a testing subset out of a dataset is that you can get a reliable insight on whether your model has predictive power or not. If you used the same data or a subset of the same data that you used for training your moded for testing it too, the results would not be indicative of the testing performance, let alone of the generalizable predictive power of the model.</p>
 
 </div>
 </div>
