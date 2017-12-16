@@ -11819,7 +11819,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -11936,7 +11936,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Total number of records</span>
@@ -11947,6 +11947,12 @@ div#notebook {
 
 <span class="c1"># TODO: Number of records where individual&#39;s income is at most $50,000</span>
 <span class="n">n_at_most_50k</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;&lt;=50K&quot;</span><span class="p">)</span>
+
+<span class="c1"># Or:</span>
+<span class="c1"># n_greater_50k = data[&quot;income&quot;][data[&quot;income&quot;] == &quot;&gt;50K&quot;].count()</span>
+<span class="c1"># n_at_most_50k = data[&quot;income&quot;][data[&quot;income&quot;] == &quot;&lt;=50K&quot;].count()</span>
+<span class="c1"># Or:</span>
+<span class="c1"># n_at_most_50k, n_greater_50k = data.income.value_counts()</span>
 
 <span class="c1"># TODO: Percentage of individuals whose income is more than $50,000</span>
 <span class="n">greater_percent</span> <span class="o">=</span> <span class="n">n_greater_50k</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_records</span> <span class="o">*</span> <span class="mf">0.01</span><span class="p">)</span> 
@@ -13060,7 +13066,7 @@ It is a ratio of true positives(words classified as spam, and which are actually
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
@@ -13074,7 +13080,7 @@ It is a ratio of true positives(words classified as spam, and which are actually
 <span class="c1"># TODO: Calculate accuracy, precision and recall</span>
 <span class="n">accuracy</span> <span class="o">=</span> <span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">income</span><span class="p">)</span> <span class="o">+</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">income</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">+</span> <span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">recall</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">income</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">income</span><span class="p">)</span> <span class="o">+</span> <span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">precision</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">income</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">income</span><span class="p">)</span> <span class="o">+</span> <span class="n">income</span><span class="o">.</span><span class="n">count</span><span class="p">()))</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">income</span><span class="p">)</span> <span class="o">/</span> <span class="n">income</span><span class="o">.</span><span class="n">count</span><span class="p">())</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># TODO: Calculate F-score using the formula above for beta = 0.5 and correct values for precision and recall.</span>
 <span class="c1"># HINT: The formula above can be written as (1 + beta**2) * (precision * recall) / ((beta**2 * precision) + recall)</span>
@@ -13097,7 +13103,7 @@ It is a ratio of true positives(words classified as spam, and which are actually
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Naive Predictor: [Accuracy score: 0.2478, F-score: 0.2365]
+<pre>Naive Predictor: [Accuracy score: 0.2478, F-score: 0.2917]
 </pre>
 </div>
 </div>
@@ -13162,9 +13168,9 @@ Following the scikit-learn algorithm cheat-sheet, I will choose support vector m
 <h4 id="Support-Vector-Machines-(SVM):">Support Vector Machines (SVM):<a class="anchor-link" href="#Support-Vector-Machines-(SVM):">&#182;</a></h4><p>•Describe one real-world application in industry where the model can be applied. 
 Object detection from images, for example, face detection. <a href="http://www.clopinet.com/SVM.applications.html">http://www.clopinet.com/SVM.applications.html</a></p>
 <p>•What are the strengths of the model; when does it perform well?
-SVMs work well on small and clean datasets. They can model non-linear decision boundaries, and there are many kernels to choose from. Choosing an appropriate kernel let's the user build domain knowledge into the model, but besides that SVM has few hyperparameters in comparison with e.g. nnets, so it requires less grid-searching. They are also fairly robust against overfitting, especially in high-dimensional space. SVM is defined by a convex optimisation problem, meaning that there are no local minima and thus a global optimum is guaranteed. SVM only uses a subset of training points so it can be more efficient.</p>
+SVMs work well on small and clean datasets. They can model non-linear decision boundaries, and there are many kernels to choose from. Choosing an appropriate kernel lets the user build domain knowledge into the model, but besides that SVM has few hyperparameters in comparison with e.g. nnets, so it requires less grid-searching. They are also fairly robust against overfitting, especially in high-dimensional space. SVM is defined by a convex optimisation problem, meaning that there are no local minima and thus a global optimum is guaranteed. SVM only uses a subset of training points so it can be more efficient.</p>
 <p>•What are the weaknesses of the model; when does it perform poorly?
-SVMs are memory intensive, trickier to tune due to the importance of picking the right kernel, and don't scale well to larger datasets as the training time becomes easily too long. With noisy datasets with overlapping classes SVM becomes less effective. SVMs are non-parametric, which means that the classifier is deduced directly from the data without assumptions about a probabilistic distribution, prohibiting us from inferring anything about the population. SVMs were designed for binary classification and as they are not very well-suited for multi-class classification offhand. Currently in the industry, random forests are usually preferred over SVMs.</p>
+SVMs are memory intensive, trickier to tune due to the importance of picking the right kernel, and don't scale well to larger datasets as the training time becomes easily too long. With noisy datasets with overlapping classes SVM becomes less effective. SVMs are non-parametric, which means that the classifier is deduced directly from the data without assumptions about a probabilistic distribution, prohibiting us from inferring anything about the population. SVMs were designed for binary classification and as such they are not very well-suited for multi-class classification offhand. Currently in the industry, random forests are usually preferred over SVMs.</p>
 <p>•What makes this model a good candidate for the problem, given what you know about the data?
 It is a binary classification problem. The number of data is relatively low and I would guess quite noise-free.</p>
 <h4 id="K-nearest-neighbors:">K-nearest neighbors:<a class="anchor-link" href="#K-nearest-neighbors:">&#182;</a></h4><p>•Describe one real-world application in industry where the model can be applied.
@@ -13178,17 +13184,26 @@ Lazy learning brings the disadvantages of storing the entire training dataset an
 Computationally expensive, because with every query instance the distance must be computed to all the training samples. It may not be obvious if the chosen distance function is meaningful or the K the optimal. Sensitive to class-outliers (mislabeled training instances) and lots of irrelevant attributes which affect distance. Perform poorly for high-dimensional data.</p>
 <p>•What makes this model a good candidate for the problem, given what you know about the data?
 The number of data is still relatively low (and not growing) and in any case processing speed is not so crucial (e.g. no real-time prediction is needed) in this case. Using k-NN to search for similar instances as the known relevant instances ("income&gt;50K") sounds to make sense.</p>
-<h4 id="Ensemble-Methods-(Bagging,-AdaBoost,-Random-Forest,-Gradient-Boosting):">Ensemble Methods (Bagging, AdaBoost, Random Forest, Gradient Boosting):<a class="anchor-link" href="#Ensemble-Methods-(Bagging,-AdaBoost,-Random-Forest,-Gradient-Boosting):">&#182;</a></h4><p>•Describe one real-world application in industry where the model can be applied. 
-Ensemble methods can be used for a number of things, such as making recommendation systems, like in the famous case of the winner of the Netflix competition (<a href="http://proceedings.mlr.press/v7/niculescu09/niculescu09.pdf">http://proceedings.mlr.press/v7/niculescu09/niculescu09.pdf</a>). Another application of ensemble methods was in prediction of customer churn, appetency and up-selling (<a href="http://blog.echen.me/2011/10/24/winning-the-netflix-prize-a-summary/">http://blog.echen.me/2011/10/24/winning-the-netflix-prize-a-summary/</a>) as part of KDD Cup using customer data provided by the telecom company Orange.</p>
+<h4 id="AdaBoost:">AdaBoost:<a class="anchor-link" href="#AdaBoost:">&#182;</a></h4><p>•Describe one real-world application in industry where the model can be applied. 
+AdaBoost was used in a study to detect microcalcifications in breas cancer, which are considered to be the basic symptoms present in mammogramns for breast cancer diagnosis. The study found out that an AdaBoost classifier gave a better accuracy in detecting microcalcifications than an artificial neural network classifier. <a href="http://www.sciencedirect.com/science/article/pii/S0378603X16301668">http://www.sciencedirect.com/science/article/pii/S0378603X16301668</a></p>
 <p>•What are the strengths of the model; when does it perform well?</p>
-<p>Voting and averaging based ensemble methods are simple and easy to understand. Majority votes make most sense when the evaluation metric requires hard predictions, for instance with (multiclass-) classification accuracy. Averaging often reducs overfit and works well for a wide range of problems and metrics (AUC, squared error or logaritmic loss).</p>
-<p>Boosting is fast, easy to program, has no parameters to tune, and doesn't require prior knowledge about the week learner. There are several variations of boosting techniques, such as AdaBoost, BrownBoost and Gradient Boosting that address some specific problems, such as noise or class imbalance through their own weight update rules. Bagging, a.k.a. bootstrap aggregating, should be used with unstable classifiers, that is, classifiers that are sensitive to variations in the training set such as decision trees and perceptrons. Algorithms like Random Forests use ensembling techniques like bagging internally. If you have models with high variance and your models overfit your data, then you are likely to benefit from using bagging. If you have biased models, it is better to combine them with Boosting. Stacking is currently one of the best methods to improve machine learning algorithms. Automated large ensembles ward against overfit and add a form of regularization, without requiring much tuning or selection.</p>
-<p>Generally, ensemble methods reduce the chance of overfitting, because the complexity added by using ensemble methods only improves the model. For example, in bagging, the more independent estimators you have, the better the model given by averaging the estimators. Also, generally ensemble methods behave well with data of mixed type, or heterogeneous features, like textual, categorical, numeric, discrete etc. Moreover, ensemble methods can be combined with any other learning algorithm (preferably a weak learner, the most suited and therefore most common algorithm used with AdaBoost are decision trees with one level).</p>
+<p>Boosting is fast, easy to program, has no parameters to tune, and doesn't require prior knowledge about the weak learner. There are several variations of boosting techniques, such as AdaBoost, BrownBoost and Gradient Boosting that address some specific problems, such as noise or class imbalance through their own weight update rules.</p>
+<p>The most popular boosting algorithm is AdaBoost (Ada as in "adaptive"). AdaBoost can be combined with any other learning algorithm (preferably a weak learner), but oftentimes the most suited and therefore most common algorithm used with AdaBoost are decision trees with one level, a.k.a. "decision stumps". AdaBoost behaves well with data of mixed type, or heterogeneous features, like textual, categorical, numeric, discrete and so on.</p>
+<p>Interestingly, AdaBoost often does not overfit, provided that it has been given enough training data and simple weak classifiers which satisfy the weak learning condition, and also if it has been run enough but not too many iterations. Such resistance to overfitting is typical of boosting; the complexity added by boosting only improves the model. But there is a limit to this behavior and as such boosting, including AdaBoost, certainly can overfit.</p>
+<p>AdaBoost can be viewed as greedy optimization of a particular loss function or more specifically as optimizing the exponential loss. Another way to look at it is that AdaBoost increases the margin size between the training instances and the decision boundary, increasing the confidence in the predictions. The latter is considered one explanation as to why AdaBoost (and boosting generally) is resistant to overfitting.</p>
+<p>Class Imbalance Problem is a term to describe a machine learning problem where the total number of a class of data (positive) is far less than the number of another class of data (negative). It is a very common case in practical applications and poses a problem because most machine learning algorithms work best when the number of instances of each class is roughly equal. Adaboost is good at handling the Class Imbalance Problem, as it integrates two apt approaches in tackling the problem, namely resampling (oversampling data from the minority classes or undersampling data from the majority classes) and cost-sensitive learning (assigning misclassification costs to data from each class, forcing the classifier to concentrate on the minority classes). Moreover, AdaBoost brings in its inherent advantages that are courtesy of boosting weak classifiers to strong ones. (<a href="http://people.ee.duke.edu/~lcarin/Minhua4.18.08.pdf">http://people.ee.duke.edu/~lcarin/Minhua4.18.08.pdf</a>)</p>
 <p>•What are the weaknesses of the model; when does it perform poorly?</p>
-<p>The main disadvantage of bagging, and other ensemble algorithms (apart from simple voting and averaging), is the lack of interpretation. A linear combination of decision trees is much harder to interpret than a single tree. Likewise: bagging a variable selection - fitting algorithm for linear models (e.g. selecting the variables using the AIC criterion within the least-squares estimation framework) gives little clues which of the predictor variables are actually important.</p>
-<p>Boosting may overfit if the weak classifiers are too complex or too weak and it is sensitive to uniform noise and outliers. Stacking is computationally expensive and complex. If you need to work in a probabilistic setting, ensemble methods may not work. It is known that Boosting (in its most popular forms like AdaBoost) delivers poor probability estimates. That is, if you would like to have a model that allows you to reason about your data, not only classification, ensemble methods may not be a good choice.</p>
+<p>The main disadvantage of ensemble methods, including AdaBoost, is the lack of interpretation. A linear combination of decision trees is much harder to interpret than a single tree.</p>
+<p>AdaBoost may overfit if the weak classifiers are too complex or too weak. AdaBoost is sensitive to uniform noise and outliers. If you need to work in a probabilistic setting, ensemble methods, including AdaBoost, may not work. That is, if you would like to have a model that allows you to reason about your data, not only do classification, AdaBoost may not be a good choice.</p>
 <p>•What makes this model a good candidate for the problem, given what you know about the data?
-Ensemble methods often bring improvement to models and anyway, it doesn't come with a big cost to give them a try to see if there was any benefit to the model.</p>
+In the earlier question, we calculated the following:</p>
+<ul>
+<li>Total number of records: 45222</li>
+<li>Individuals making more than 50,000: 11208</li>
+<li>Individuals making at most 50,000: 34014</li>
+<li>Percentage of individuals making more than 50,000: 24.78%</li>
+</ul>
+<p>Although it's not a terrible imbalance between the two classes, it may still count as a legit Class Imbalance Problem. Therefore, AdaBoost can be justfifiably argued to be an apt choice.</p>
 
 </div>
 </div>
@@ -14175,9 +14190,8 @@ The F score, which is oftentimes the best metric for assessing model performance
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong> 
-Boosters are a family of algorithms that are able to convert weak models into a strong one. We call a model weak when it has a substantial error rate, but the performance is not random nevertheless. A weak model's error rate would be just under 0.5 for a binary classification problem. Boosting uses a weak model (or a weak learner or a weak hypothesis), the default one being a one-level decision tree classifier ("a decision stump"), as the so-called base learner, and creates an ensemble of hypotheses out of it. The rational for creating the ensemble is based on the assumption of weak learners, or what is called the weak learning condition.</p>
-<p>Boosting builds the ensemble incrementally and sequentially by training the base learner iteratively with the same dataset, except that the weights of data instances are adjusted in accordance with the error of the last prediction (or hypothesis). In this so-called boosting iteration the weights are adjusted so that the model focuses on those training instances that are hard to classify correctly. Each combination of base learner and weights of the training instances make up a hypothesis. As a linear combination of all the individual hypotheses, we get a strong final hypothesis, which has an arbitrarily small generalization error. After just O(log m) iterations, the final hypothesis will perfectly fit the training set, but also the complexity of the final hypothesis will grow. Thus, with an improved fit to the training set, the test error drops at first, but then rises again due to the final hypothesis becoming overly complex; in other words, the model overfits.</p>
-<p>The most popular boosting algorithm is AdaBoost (as in "adaptive"). AdaBoost interestingly often does not overfit, provided that it has been given enough training data and simple weak classifiers which satisfy the weak learning condition, and also if it has been run enough but not too many iterations. Such resistance to overfitting is typical of boosting, although boosting certainly can overfit. AdaBoost can be viewed as greedy optimization of a particular loss function or more specifically as optimizing the exponential loss. Another way to look at it is that AdaBoost increases the margin size between the training instances and the decision boundary, increasing the confidence in the predictions. The latter is considered one explanation as to why AdaBoost (and boosting generally) is resistant to overfitting.</p>
+Boosters are a family of algorithms that are able to convert weak models into a strong one. We call a model weak when it has a substantial error rate, but the performance is not random nevertheless. For a binary classification problem, a weak model's error rate would be just a tad below 0.5. Boosting uses a weak model (or a weak learner or a weak hypothesis), the default one being a one-level decision tree classifier, as the so-called base learner and creates an ensemble of hypotheses out of it. The rational for creating the ensemble is based on the assumption of weak learners, or what is called the weak learning condition.</p>
+<p>Boosting builds the ensemble incrementally and sequentially by training the base learner iteratively with the same dataset, except that the weights of data instances are adjusted in accordance with the error of the last prediction (or hypothesis). In this so-called boosting iteration the weights are adjusted so that the model focuses on those training instances that are hard to classify correctly. Each combination of base learner and weights of the training instances make up a hypothesis. As a linear combination of all the individual hypotheses, we get a strong final hypothesis, which has an arbitrarily small generalization error. After just O(log m) iterations, the final hypothesis will perfectly fit the training set, but also the complexity of the final hypothesis will grow. Thus, with an improved fit to the training set, the test error drops at first, but then at some point rises again due to the final hypothesis becoming overly complex; in other words, the model overfits.</p>
 
 </div>
 </div>
@@ -14414,7 +14428,7 @@ Final F-score on the testing data: 0.7316
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
-The optimized model beat the unoptimized one in both accuracy and F-score. Compared with the naive predictor (accuracy score: 0.2478, F-score: 0.2365), there is a vast different with both of the models.</p>
+The optimized model beat the unoptimized one in both accuracy and F-score. Compared with the naive predictor (accuracy score: 0.2478, F-score: 0.2917), there is a vast difference to both of the models.</p>
 
 </div>
 </div>
