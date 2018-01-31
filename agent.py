@@ -44,7 +44,8 @@ class LearningAgent(Agent):
             self.alpha = 0
         else:
             #self.epsilon = self.epsilon - 0.05
-            self.epsilon = self.alpha**(self.trialNumber)
+            import math
+            self.epsilon = math.exp(-0.05 * self.trialNumber)
             self.trialNumber += 1
 
         return None
@@ -69,7 +70,7 @@ class LearningAgent(Agent):
         # With the hand-engineered features, this learning process gets entirely negated.
         
         # Set 'state' as a tuple of relevant data for the agent
-        state = (waypoint, inputs['light'], inputs['oncoming'])
+        state = (waypoint, inputs['light'], inputs['oncoming'], inputs['left'])
         return state
 
 
@@ -178,7 +179,7 @@ def run():
     #   learning   - set to True to force the driving agent to use Q-learning
     #    * epsilon - continuous value for the exploration factor, default is 1
     #    * alpha   - continuous value for the learning rate, default is 0.5
-    agent = env.create_agent(LearningAgent, learning = True, alpha = 0.8, epsilon = 1) 
+    agent = env.create_agent(LearningAgent, learning = True, alpha = 0.5, epsilon = 1)
     
     ##############
     # Follow the driving agent
@@ -199,7 +200,7 @@ def run():
     # Flags:
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of         testing trials to perform, default is 0
-    sim.run(n_test = 10, tolerance = 0.02)
+    sim.run(n_test = 10, tolerance = 0.007)
 
 
 if __name__ == '__main__':
